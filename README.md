@@ -73,6 +73,7 @@ Make an arbitrary HTTP request.
 - `method` (string): HTTP method (GET, POST, PUT, DELETE, PATCH, etc.). Defaults to GET.
 - `headers` (object, optional): Key-value pairs of HTTP headers.
 - `params` (object, optional): Key-value pairs of URL query parameters.
+- `cookies` (object, optional): Key-value pairs of cookies to be included in the request.
 - `body` (object/string, optional): The request body. Content-Type header should match this body.
 
 **Example (GET):**
@@ -83,6 +84,11 @@ Make a GET request to https://api.example.com/users?id=123
 **Example (POST):**
 ```
 POST to https://api.example.com/data with content-type application/json and body {"key": "value"}
+```
+
+**Example (Cookies):**
+```
+Make a GET request to https://api.example.com/profile with cookies {"session": "abc", "theme": "dark"}
 ```
 
 ## Development

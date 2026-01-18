@@ -8,10 +8,29 @@ export interface MakeRequestArgs {
     headers?: Record<string, string>;
     params?: Record<string, string>;
     body?: any;
+    cookies?: Record<string, string>;
 }
 
 export async function makeRequest(args: MakeRequestArgs): Promise<string> {
-    const { url, method = 'GET', headers, params, body } = args;
+    const { url, method = 'GET', headers: initialHeaders, params, body, cookies } = args;
+
+    const headers = { ...initialHeaders };
+
+    // Process cookies if provided
+    if (cookies) {
+        const cookieString = Object.entries(cookies)
+            .map(([key, value]) => `${key}=${value}`)
+            .join('; ');
+
+        if (cookieString) {
+            // If Cookie header already exists, append to it (though usually it's one or the other)
+            if (headers['Cookie']) {
+                headers['Cookie'] = `${headers['Cookie']}; ${cookieString}`;
+            } else {
+                headers['Cookie'] = cookieString;
+            }
+        }
+    }
 
     try {
         const response = await axios({

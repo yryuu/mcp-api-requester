@@ -42,6 +42,11 @@ const tools = [
                 body: {
                     description: 'The request body. Can be a JSON object or string. Content-Type header should match this body.',
                 },
+                cookies: {
+                    type: 'object',
+                    description: 'Key-value pairs of cookies to include in the request. Will be formatted into the Cookie header.',
+                    additionalProperties: { type: 'string' },
+                },
             },
             required: ['url'],
         },

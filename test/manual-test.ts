@@ -24,6 +24,16 @@ async function test() {
         url: 'https://httpbin.org/status/404'
     });
     console.log(notFoundResult);
+
+    console.log('\n--- Testing Cookie Request ---');
+    const cookieResult = await makeRequest({
+        url: 'https://httpbin.org/cookies',
+        cookies: {
+            'session_id': '12345',
+            'user_pref': 'dark_mode'
+        }
+    });
+    console.log(cookieResult);
 }
 
 test().catch(console.error);
