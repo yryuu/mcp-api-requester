@@ -23,14 +23,12 @@ No installation needed! Just configure Claude Desktop to use npx:
       "command": "npx",
       "args": [
         "-y",
-        "/path/to/mcp-api-requester"
+        "github:yryuu/mcp-api-requester"
       ]
     }
   }
 }
 ```
-
-> **Note**: Replace `/path/to/mcp-api-requester` with the absolute path to where you cloned/created this repository.
 
 ### Local Installation
 
